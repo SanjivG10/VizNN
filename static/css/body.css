@@ -1,0 +1,12 @@
+body {
+   text-align: center;
+}
+
+.chartHolder{
+   padding: 10ch;
+}
+
+.chartContainer{
+   display: block;
+   margin: 0 auto;
+}

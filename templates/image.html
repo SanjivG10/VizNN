@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/image.css') }}">
+    <title>CNN</title>
+</head>
+<body>
+
+    <h2 style="text-align: center; font-family:">
+        VGG Activation Map Visualization
+    </h2>
+
+    <form method="POST" action="/cnn">
+        <div style="text-align: center; ">
+            <select id="layers" name='blockName'>
+                {% for layername in layers_name %}
+                    <option  value="{{layername}}">{{curr_selected_layer}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Check this">
+        </div>
+    </form>
+
+    
+
+
+    {% for eachImage in images_name %}
+        <div class="row">
+
+            {% if eachImage[0] %}
+                <div class="column1">
+                    <img height="400" width="400"  src=" {{ url_for('static',filename='images/') }}{{eachImage[0]}}  " />
+                    <h4>{{eachImage[0]}}</h4>
+                </div>
+
+            {% endif %}
+
+            {% if eachImage[1] %}
+                <div class="column2">
+                    <img height="400" width="400"  src=" {{ url_for('static',filename='images/') }}{{eachImage[1]}}  " />
+                    <h4>{{eachImage[1]}}</h4>
+
+                </div>
+            {% endif %}
+
+            {% if eachImage[2] %}
+
+                <div class="column2">
+                    <img height="400" width="400"  src=" {{ url_for('static',filename='images/') }}{{eachImage[1]}}  " />
+                    <h4>{{eachImage[2]}}</h4>
+                </div>
+
+            {% endif %}
+        </div>
+    {%endfor%}
+
+    
+
+<!-- 
+    <div class="container" >
+
+        <div class="imageContainer">
+            {% for eachImageName in images_name %}
+
+            {% if loop.index is divisibleby(3) and loop.index > 0 %}
+            {% else %}
+            
+            {% endif %}
+
+            {% endfor %}
+
+
+        </div>
+
+
+    </div> -->
+
+</body>
+</html>

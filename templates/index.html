@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/body.css') }}">
+    <title>Visualizing Neural Network Values!</title>
+</head>
+<body>
+    
+    
+
+    {% for item in data %}
+
+        <div class="chartHolder">
+            <h3 style="text-align:center">
+                {{item['label']}}
+             </h3>
+     
+             <div class="chartContainer"  style="height:20vh; width:40vw">
+                 <canvas id="chart" class={{item['index']}}></canvas>
+             </div>
+             <div style="padding: 8  pc;">
+     
+             </div>
+        </div>
+
+        
+    {% endfor %}
+
+    
+
+    <script src="{{ url_for('static',filename='js/Chart.js') }}"></script>
+    <script type="text/javascript">
+        dataFunc = ()=>{
+            return {{data|safe }}
+        }
+    </script>
+    <script src="{{ url_for('static',filename='js/myJS.js') }}"></script>
+
+</body>
+</html>
